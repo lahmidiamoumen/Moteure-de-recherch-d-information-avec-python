@@ -4,7 +4,7 @@ import math
 from lxml import etree
 
 #--- @auther: LAHMIDI Abdelmoumene UMBB MASTER 1 TI02  ---#
-#-- very optimazed code [Finished in 6.6s] --#
+#--  [Finished in 6.6s] --#
 
 def count(str): #retourne le nbr de voy-cons
     return len(re.sub('[aeiou]((?![aeiou0-9]))', " ", str).split()) - 1
