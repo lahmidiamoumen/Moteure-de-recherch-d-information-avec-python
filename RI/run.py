@@ -41,7 +41,7 @@ docs = etree.parse("Corpus_OHSUMED.txt", parser=etree.XMLParser(recover=True)).g
 stopWord = re.sub("\n", " ", open("stoplist.txt", 'r').read()).split()
 data = []
 invertedIndex = []
-final = {}
+fichierInverse = {}
 poids = {}
 
 for child in docs.iterfind('DOC'): # list of {DOCi,{TITLESi terms},{ABSTRACTi terms}}
@@ -60,8 +60,8 @@ for t in data:  # list of {DOCi,{DOCi terms}}
         totals[key] = totals.get(key, 0) + value
     invertedIndex.append({'docId': t['doc'], 'term': totals})
 
-for tt in invertedIndex: # final -> inverted index structur list not sorted
+for tt in invertedIndex: # fichierInverse -> inverted index structure list not sorted
     for token in tt['term']:
-        final.update({token: final.get(token, [])+[{'doc': tt['docId'], 'poids': tt['term'][token]}] })
+        fichierInverse.update({token: fichierInverse.get(token, [])+[{'doc': tt['docId'], 'poids': tt['term'][token]}] })
 
-print('advanc :',final['advanc']) # example of a given term 'advanc'
+print('advanc :',fichierInverse['advanc']) # example of a given term 'advanc'
